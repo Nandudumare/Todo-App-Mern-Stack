@@ -4,7 +4,7 @@
 This was a Assignment at Masai School. It’s a list of tasks you need to complete or things that you want to do. 
 </p>
 
-* [Click Here](https://tubular-sprinkles-935af0.netlify.app/"Todo App") to view the deployed website.
+* [Click Here](https://tubular-sprinkles-935af0.netlify.app/"Todo-App") to view the deployed website.
 
 <p>
 The goal of this app is to help us become more aware of how we spend time in the process of doing those tasks and how productive that time is. It can help set some constraints on social media to reduce distraction and track the time we spend working on the todo items. When we have a better sense of the estimated time we’ll need to spend on our tasks, along with the validated time spent on the items for reference or personal/team reviews, we are able to manage our daily routines more efficiently.
@@ -13,7 +13,7 @@ The goal of this app is to help us become more aware of how we spend time in the
 ### Credits
 ___
 * Icons: [React Icons](https://react-icons.github.io/react-icons/)
-* References: [MDN Docs](https://developer.mozilla.org/en-US/ ) | [W3Schools](https://www.w3schools.com/) | [Glider JS](https://nickpiscitelli.github.io/Glider.js/)
+* References: [MDN Docs](https://developer.mozilla.org/en-US/ ) | [W3Schools](https://www.w3schools.com/)
 
 ### Tech-Stack
 ___
