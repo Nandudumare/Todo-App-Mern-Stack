@@ -18,6 +18,9 @@ ___
 ### Tech-Stack
 ___
 
+* MongoDB
+* Express JS
+* Node JS
 * React JS
 * Typescript
 * Git
