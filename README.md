@@ -1,7 +1,7 @@
 ## Todo App 
 ---
 <p>
-This was a Assignment at Masai School. It’s a list of tasks you need to complete or things that you want to do. 
+  It’s a list of tasks you need to complete or things that you want to do. 
 </p>
 
 * [Click Here](https://admirable-haupia-6a5610.netlify.app/) to view the deployed website.
