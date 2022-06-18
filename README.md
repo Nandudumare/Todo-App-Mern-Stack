@@ -33,6 +33,7 @@ ___
 * you can edit task 
 * you can delete task 
 * you can toggle task between completed and not completed
+* Responsive App
 
 ### Screenshots
 ___
