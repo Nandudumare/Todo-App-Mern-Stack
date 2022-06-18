@@ -33,7 +33,33 @@
     color:white;
     transition:0.2s all;
     box-shadow:0 0 10px black;
-}
+  }
+  #logout{
+    width:70px;
+    height:70px;
+    /* min-width: 30px; */
+    /* min-height: 30px; */
+    background-color:#e4bd10;
+    position:absolute;
+    margin:12px;
+    border-radius:50px;
+    right:0px;
+    border:none;
+    font-size:15px;
+    color:white;
+    transition:0.2s all;
+    box-shadow:0 0 10px black;
+  }
+  #logout:active{
+    
+    transform:scale(0.8);
+    box-shadow:0 0 5px black;
+  }
+  #logout:hover{
+     background-color:#ff483e
+  }
+
+
 .input_submit:hover{
     background-color:hsla(193, 86%, 57%, 0.883);
 }
@@ -111,10 +137,21 @@
       width: 45%;
     } */
   }
+  @media (max-width: 800px) {
+    #logout{
+      width: 55px;
+      height: 55px;
+    }
+  }
+
   
   @media (max-width: 700px) {
     .input {
       width: 95%;
+    }
+    #logout{
+      width: 55px;
+      height: 55px;
     }
     /* .container {
       width: 95%;
