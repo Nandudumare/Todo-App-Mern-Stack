@@ -27,6 +27,8 @@ ___
 
 ### Features
 ___
+* You can SignIn and LogIn into this todo-app
+* You can LogOut from todo-app
 * You can add task
 * you can edit task 
 * you can delete task 
@@ -36,9 +38,9 @@ ___
 ___
 ![screehshot](https://my-new-ms11j7luc-dumarenandu70-gmailcom.vercel.app/static/media/todo.39e9ac2f.png)
 
-### Deployement
+## Deployement For Client
 
-## Getting Started with Create React App
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
