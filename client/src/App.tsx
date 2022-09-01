@@ -6,8 +6,6 @@ import InputFeild from "./Components/InputFeild";
 import TodoList from "./Components/TodoList";
 import { Todo } from "./modal";
 
-
-
 const App: React.FC = () => {
   const [state, setState] = React.useState<boolean>(false);
   const [task, setTask] = useState<string>("");

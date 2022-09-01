@@ -33,6 +33,7 @@
     color:white;
     transition:0.2s all;
     box-shadow:0 0 10px black;
+    cursor: pointer;
   }
   #logout{
     width:70px;
@@ -49,6 +50,7 @@
     color:white;
     transition:0.2s all;
     box-shadow:0 0 10px black;
+    cursor: pointer;
   }
   #logout:active{
     

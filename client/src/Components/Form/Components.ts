@@ -105,7 +105,7 @@ export const Button = styled.button`
   min-width:9rem;
   font-weight: bold;
   padding: 12px 45px;
- 
+  cursor:pointer;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
   &:active {
@@ -119,6 +119,7 @@ export const Button = styled.button`
 export const GhostButton = styled(Button)`
   background-color: transparent;
   border-color: #ffffff;
+  cursor:pointer;
 `;
 
 export const Anchor = styled.a`
