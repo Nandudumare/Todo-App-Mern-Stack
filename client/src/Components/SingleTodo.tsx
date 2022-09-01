@@ -11,46 +11,85 @@ type Props = {
   todo: Todo;
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const SingleTodo = ({ todo, todos, setTodos }: Props) => {
+const SingleTodo = ({ todo, todos, setTodos, loading, setLoading }: Props) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.task);
   const value: any = localStorage.getItem("apiKey");
   const apiKey: string = JSON.parse(value);
+
   const handleDone = async (id: number) => {
-    const item = todos.filter((el) => el.id === id);
-    const Item = item[0];
+    setLoading(true);
+    try {
+      const item = todos.filter((el) => el.id === id);
+      const Item = item[0];
 
-    await axios.patch(`https://todo-application-best.herokuapp.com/todo/${apiKey}/${id}`, {
-      ...Item,
-      status: !Item.status,
-    });
+      await axios.patch(
+        `https://todo-typescript154.herokuapp.com/todo/${apiKey}/${id}`,
+        {
+          ...Item,
+          status: !Item.status,
+        }
+      );
+      setLoading(false);
 
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, status: !todo.status } : todo
-      )
-    );
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, status: !todo.status } : todo
+        )
+      );
+    } catch (err) {
+      setTimeout(() => {
+        setLoading(false);
+        alert("Something went wrong");
+      }, 1000);
+    }
   };
   const handleDelete = async (id: number) => {
-    await axios.delete(`https://todo-application-best.herokuapp.com/todo/${apiKey}/${id}`);
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setLoading(true);
+    try {
+      await axios.delete(
+        `https://todo-typescript154.herokuapp.com/todo/${apiKey}/${id}`
+      );
+      setTodos(todos.filter((todo) => todo.id !== id));
+      setLoading(false);
+    } catch (err) {
+      setTimeout(() => {
+        setLoading(false);
+        alert("Something went wrong");
+      }, 1000);
+    }
   };
 
   const handleEdit = async (e: React.FormEvent, id: number) => {
     e.preventDefault();
+    setLoading(true);
+    try {
+      const item = todos.filter((el) => el.id === id);
+      const Item = item[0];
 
-    const item = todos.filter((el) => el.id === id);
-    const Item = item[0];
-
-    await axios.patch(`https://todo-application-best.herokuapp.com/todo/${apiKey}/${id}`, {
-      ...Item,
-      task: editTodo,
-    });
-    setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, task: editTodo } : todo))
-    );
-    setEdit(false);
+      await axios.patch(
+        `https://todo-typescript154.herokuapp.com/todo/${apiKey}/${id}`,
+        {
+          ...Item,
+          task: editTodo,
+        }
+      );
+      setLoading(false);
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, task: editTodo } : todo
+        )
+      );
+      setEdit(false);
+    } catch (err) {
+      setTimeout(() => {
+        setLoading(false);
+        alert("Something went wrong");
+      }, 1000);
+    }
   };
 
   const inputRef = useRef<HTMLInputElement>(null);

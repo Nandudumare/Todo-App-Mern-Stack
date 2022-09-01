@@ -5,9 +5,17 @@ interface Props {
   task: string;
   setTask: React.Dispatch<React.SetStateAction<string>>;
   handleAdd: (e: React.FormEvent) => void;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const InputFeild = ({ task, setTask, handleAdd }: Props) => {
+const InputFeild = ({
+  task,
+  setTask,
+  handleAdd,
+  loading,
+  setLoading,
+}: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <form

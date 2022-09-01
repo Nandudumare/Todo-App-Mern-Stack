@@ -6,9 +6,11 @@ import "./styles.css";
 type Props = {
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const TodoList = ({ todos, setTodos }: Props) => {
+const TodoList = ({ todos, setTodos,loading, setLoading }: Props) => {
   return (
     //normal
     <div className="todos">
@@ -19,6 +21,8 @@ const TodoList = ({ todos, setTodos }: Props) => {
             todo={todo}
             todos={todos}
             setTodos={setTodos}
+            loading={loading}
+            setLoading={setLoading}
           />
         );
       })}

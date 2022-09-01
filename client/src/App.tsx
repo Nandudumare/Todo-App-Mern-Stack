@@ -10,6 +10,7 @@ const App: React.FC = () => {
   const [state, setState] = React.useState<boolean>(false);
   const [task, setTask] = useState<string>("");
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   let value: any = localStorage.getItem("apiKey");
   let apiKey: string = JSON.parse(value);
@@ -23,12 +24,20 @@ const App: React.FC = () => {
   }, [state, apiKey]);
 
   let fn = async () => {
-    let res = await axios.get(
-      `https://todo-application-best.herokuapp.com/todo/${apiKey}`
-    );
-    const data = res.data;
-    console.log("data:", data);
-    setTodos([...data]);
+    setLoading(true);
+    try {
+      let res = await axios.get(
+        `https://todo-typescript154.herokuapp.com/todo/${apiKey}`
+      );
+      const data = res.data;
+      setTodos([...data]);
+      setLoading(false);
+    } catch (err) {
+      setTimeout(() => {
+        setLoading(false);
+        alert("Something went wrong");
+      }, 1000);
+    }
   };
 
   React.useEffect(() => {
@@ -44,14 +53,22 @@ const App: React.FC = () => {
   const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
     if (task) {
-      let payload = { id: Date.now(), task: task, status: false };
-      await axios.post(
-        `https://todo-application-best.herokuapp.com/todo/${apiKey}`,
-        payload
-      );
-      fn();
-      // setTodos([...todos, payload]);
-      setTask("");
+      setLoading(true);
+      try {
+        let payload = { id: Date.now(), task: task, status: false };
+        await axios.post(
+          `https://todo-typescript154.herokuapp.com/todo/${apiKey}`,
+          payload
+        );
+        setLoading(false);
+        fn();
+        setTask("");
+      } catch (err) {
+        setTimeout(() => {
+          setLoading(false);
+          alert("Something went wrong");
+        }, 1000);
+      }
     }
   };
   const handleLogout = () => {
@@ -61,6 +78,22 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      {loading ? (
+        <div className="loader">
+          <ul className="loader_ul">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
+
       {state ? (
         <>
           <span className="heading">Todo App</span>
@@ -69,11 +102,22 @@ const App: React.FC = () => {
             Log Out
           </button>
 
-          <InputFeild task={task} setTask={setTask} handleAdd={handleAdd} />
-          <TodoList todos={todos} setTodos={setTodos} />
+          <InputFeild
+            task={task}
+            setTask={setTask}
+            handleAdd={handleAdd}
+            loading={loading}
+            setLoading={setLoading}
+          />
+          <TodoList
+            todos={todos}
+            setTodos={setTodos}
+            loading={loading}
+            setLoading={setLoading}
+          />
         </>
       ) : (
-        <Form setState={setState} />
+        <Form setState={setState} loading={loading} setLoading={setLoading} />
       )}
     </div>
   );

@@ -13,9 +13,11 @@ type CreateData = {
 
 type props = {
   setState: React.Dispatch<React.SetStateAction<boolean>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function Form({ setState }: props) {
+function Form({ setState, loading, setLoading }: props) {
   const [signIn, toggle] = React.useState<boolean>(true);
   const [createData, setCreateData] = React.useState<CreateData | object>({});
   const [loginData, setLoginData] = React.useState<CreateData | object>({});
@@ -31,17 +33,22 @@ function Form({ setState }: props) {
 
   const handleCreateSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await axios.post(
-        "https://todo-application-best.herokuapp.com/user/signup",
+        "https://todo-typescript154.herokuapp.com/user/signup",
         createData
       );
       localStorage.setItem("apiKey", JSON.stringify(res.data.apiKey));
       console.log(res.data);
-      // return () => navigate("/");
+
       setState(true);
+      setLoading(false);
     } catch (err) {
-      alert("Something went wrong");
+      setTimeout(() => {
+        setLoading(false);
+        alert("Something went wrong");
+      }, 2000);
     }
   };
 
@@ -55,17 +62,21 @@ function Form({ setState }: props) {
 
   const handleLoginSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await axios.post(
-        "https://todo-application-best.herokuapp.com/user/login",
+        "https://todo-typescript154.herokuapp.com/user/login",
         loginData
       );
       localStorage.setItem("apiKey", JSON.stringify(res.data.apiKey));
-      // return navigate("/");
       console.log(res.data);
       setState(true);
+      setLoading(false);
     } catch (err) {
-      alert("Invalid Email or Password");
+      setTimeout(() => {
+        setLoading(false);
+        alert("Invalid Email or Password");
+      }, 2000);
     }
   };
 
