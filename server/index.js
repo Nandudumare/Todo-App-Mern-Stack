@@ -13,6 +13,7 @@ app.use(
       "http://localhost:3000",
       "https://admirable-haupia-6a5610.netlify.app",
       "https://todo-application-beta.vercel.app",
+      "*",
     ],
   })
 );
