@@ -27,7 +27,7 @@ const App: React.FC = () => {
     setLoading(true);
     try {
       let res = await axios.get(
-        `https://todo-typescript154.herokuapp.com/todo/${apiKey}`
+        `https://todo-app-c9s2.onrender.com/todo/${apiKey}`
       );
       const data = res.data;
       setTodos([...data]);
@@ -57,7 +57,7 @@ const App: React.FC = () => {
       try {
         let payload = { id: Date.now(), task: task, status: false };
         await axios.post(
-          `https://todo-typescript154.herokuapp.com/todo/${apiKey}`,
+          `https://todo-app-c9s2.onrender.com/todo/${apiKey}`,
           payload
         );
         setLoading(false);

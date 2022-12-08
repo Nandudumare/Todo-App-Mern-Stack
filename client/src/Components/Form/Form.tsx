@@ -36,7 +36,7 @@ function Form({ setState, loading, setLoading }: props) {
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://todo-typescript154.herokuapp.com/user/signup",
+        "https://todo-app-c9s2.onrender.com/user/signup",
         createData
       );
       localStorage.setItem("apiKey", JSON.stringify(res.data.apiKey));
@@ -65,7 +65,7 @@ function Form({ setState, loading, setLoading }: props) {
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://todo-typescript154.herokuapp.com/user/login",
+        "https://todo-app-c9s2.onrender.com/user/login",
         loginData
       );
       localStorage.setItem("apiKey", JSON.stringify(res.data.apiKey));

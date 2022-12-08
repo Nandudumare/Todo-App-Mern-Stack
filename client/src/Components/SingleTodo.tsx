@@ -27,7 +27,7 @@ const SingleTodo = ({ todo, todos, setTodos, loading, setLoading }: Props) => {
       const Item = item[0];
 
       await axios.patch(
-        `https://todo-typescript154.herokuapp.com/todo/${apiKey}/${id}`,
+        `https://todo-app-c9s2.onrender.com/todo/${apiKey}/${id}`,
         {
           ...Item,
           status: !Item.status,
@@ -51,7 +51,7 @@ const SingleTodo = ({ todo, todos, setTodos, loading, setLoading }: Props) => {
     setLoading(true);
     try {
       await axios.delete(
-        `https://todo-typescript154.herokuapp.com/todo/${apiKey}/${id}`
+        `https://todo-app-c9s2.onrender.com/todo/${apiKey}/${id}`
       );
       setTodos(todos.filter((todo) => todo.id !== id));
       setLoading(false);
@@ -71,7 +71,7 @@ const SingleTodo = ({ todo, todos, setTodos, loading, setLoading }: Props) => {
       const Item = item[0];
 
       await axios.patch(
-        `https://todo-typescript154.herokuapp.com/todo/${apiKey}/${id}`,
+        `https://todo-app-c9s2.onrender.com/todo/${apiKey}/${id}`,
         {
           ...Item,
           task: editTodo,
